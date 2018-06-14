@@ -1,0 +1,272 @@
+<!doctype html>
+<html ng-app="careGiversApp">
+  <head>
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="content/css/main.css">
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/messageformat/messageformat.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>	
+	
+    <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+	<script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.tpls.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="bower_components/angular-bootstrap-multiselect/dist/angular-bootstrap-multiselect.js"></script>
+    <script src="bower_components/angular-bootstrap-multiselect/dist/angular-bootstrap-multiselect-templates.js"></script>
+
+	
+</head>
+  <body ng-controller="CareGiversController">
+    <script src="app.js"></script>
+  
+
+
+  <div class="container">
+    <table class="table">
+		<tr class="row align-items-center img-responsive">
+		  <td class="col-xs-8 hidden-sm hidden-md hidden-lg">
+			<a href="http://www.GenieHealthcare.com"><img src="content/images/logo-jhipster-mobile.png"/></a>
+		  </td>
+		  <td class="hidden-xs col-sm-12 col-md-12 col-lg-12">
+			<a href="http://www.GenieHealthcare.com"><img src="content/images/logo-jhipster-mobile.png"/></a>
+		  </td>
+		  <td class="col-xs-12 hidden-sm hidden-md hidden-lg"> 
+			<div class="row">
+				<a class="col-xs-6" href="mailto:jobs@geniehealthcare.com">
+					<img src="content/images/Email_icon_mobile.jpg" />    <!--Mobile-->
+				</a>
+				<a class="col-xs-6" href="sms:2162900652">
+					<img src="content/images/SMS_Icon_Mobile.png" />    <!--Mobile-->
+				</a>
+			</div>
+		  </td>
+		  <td class="hidden-xs col-sm-12 col-md-12 col-lg-12">
+					<div class="row">
+						<div>
+							<a class="btn btn-primary btn-md pull-right" id="phone-btn" href="mailto:jobs@geniehealthcare.com">
+								<span>E-mail to jobs@geniehealthcare.com</span>  
+							</a>
+						</div>
+						<div>
+							<div class="pull-right" id="phone-btn1">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+							</div>
+						</div>
+						<div>						
+							<a class="btn btn-info btn-md pull-right" id="phone-btn2" href="sms:2162900652">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text at 216-290-0652&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>  
+							</a>
+						</div>	
+						
+					</div>
+		   </td>
+			
+		 </tr>
+	 </table>
+	 
+      <div class="row">
+
+        <div class="hidden-xs col-sm-5 col-md-5 col-lg-5 align-middle panel panel-primary" style="height: 870px;"> 
+			<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+			<h5 font-color="blue">THE BENEFITS OF TRAVEL NURSING WITH GENIE HEALTHCARE INCLUDE:</h5>
+			  <ul class="bullets">
+				 <li>Competitive Salaries</li>
+				 <li>Multiple Bonus opportunities: Referral, Extension, rebook etc.</li>
+				 <li>Weekly Direct Deposit</li>
+				 <li>We pay for all licenses and certifications necessary for your assignments.</li>
+			 </ul>
+			 <BR>
+			  Want to check open jobs across the country? Visit <a href="http://www.geniehealthjobs.com">Genie Health Jobs</a> <BR><BR>
+			  Also visit our Facebook Group: 
+			  <a href="https://www.facebook.com/groups/geniehealthcare">Genie Health Care</a> 
+			 <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+
+		</div>
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 panel panel-primary" style="height: 870px;"> 
+        
+			<p ng-show="notSubmitted"> <BR><BR>Please complete the form if you are looking for job opportunities in your preferred locations. </p>
+			<p ng-show="!notSubmitted && !alreadyExists" class="align-middle">
+				 <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+					 <BR><BR><BR><BR><BR>
+					Your Profile details have been successfully submitted. A Genie healthcare recruiter will contact you shortly.
+	
+					Please visit our website <a href="http://www.geniehealthcare.com">www.geniehealthcare.com</a> to learn more about Genie healthcare. 
+				 <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+				 <BR><BR><BR><BR><BR>
+			</p>
+			<p ng-show="!notSubmitted && alreadyExists" class="align-middle">
+				 <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+					 <BR><BR><BR><BR><BR>
+	
+					You are already in our database, please visit <a href="http://www.geniehealthjobs.com">www.geniehealthjobs.com</a> to register or view your profile if you already registered.
+					You can also check for open jobs at <a href="http://www.geniehealthjobs.com">www.geniehealthjobs.com</a>				 
+					<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+				 <BR><BR><BR><BR><BR>
+			</p>
+		<form name="editForm" ng-show="notSubmitted" role="form" novalidate ng-submit="save()" show-validation>
+		<jhi-alert-error></jhi-alert-error>
+		        <div class="form-group">
+		            <input autofocus type="text" class="form-control" name="firstName" id="field_firstName" placeholder="Your First Name"
+		                    ng-model="candidateProfile.firstName"
+		                    required ng-maxlength="100"/>
+		            <div ng-show="editForm.firstName.$touched && editForm.firstName.$invalid">
+		                <p class="help-block"
+		                    ng-show="editForm.firstName.$error.required">
+		                    This field is required.
+		                </p>
+		                <p class="help-block"
+		                    ng-show="editForm.firstName.$error.maxlength">
+		                    This field cannot be longer than 100 characters.
+		                </p>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <input type="text" class="form-control" name="lastName" id="field_lastName" placeholder="Your Last Name"
+		                    ng-model="candidateProfile.lastName"
+		                    required ng-maxlength="100"/>
+		            <div ng-show="editForm.lastName.$touched && editForm.lastName.$invalid">
+		                <p class="help-block"
+		                    ng-show="editForm.lastName.$error.required">
+		                    This field is required.
+		                </p>
+		                <p class="help-block"
+		                    ng-show="editForm.lastName.$error.maxlength">
+		                    This field cannot be longer than 100 characters.
+		                </p>
+		            </div>
+		        </div>
+		        
+		        <div class="form-group">
+		            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber" placeholder="Your Phone Number"
+		                    ng-model="candidateProfile.phoneNumber"
+		                    required ng-maxlength="20" pattern="\d{3}-?\d{3}-?\d{4}" placeholder="1234567890"/>
+		            <div ng-show="editForm.phoneNumber.$touched && editForm.phoneNumber.$invalid">
+		                <p class="help-block"
+		                    ng-show="editForm.phoneNumber.$error.required">
+		                    This field is required.
+		                </p>
+		                <p class="help-block"
+		                    ng-show="editForm.phoneNumber.$error.maxlength">
+		                    This field cannot be longer than 20 characters.
+		                </p>
+		                <p class="help-block"
+				                    ng-show="editForm.phoneNumber.$error.pattern">
+				              			Acceptable Phone Number Format is XXX-XXX-XXXX where X is a Numeric Digit. The dashes at 4th and 8th positions are both optional.
+						</p>
+		            </div>
+		        </div>
+		        
+		        <div class="form-group">
+		            <input type="email" class="form-control" name="emailAddress" id="field_emailAddress" placeholder="Your Email Address"
+		                    ng-model="candidateProfile.emailAddress"
+		                    required ng-minlength=5 ng-maxlength="100"/>
+		            <div ng-show="editForm.emailAddress.$dirty && editForm.emailAddress.$invalid">
+		                <p class="help-block"
+		                    ng-show="editForm.emailAddress.$error.required">
+		                    This field is required.
+		                </p>
+		                <p class="help-block"
+		                               ng-show="editForm.email.$error.email">
+		                            Your email is invalid.
+		                        </p>
+		                <p class="help-block"
+		                               ng-show="editForm.email.$error.minlength">
+		                            Your email is required to be at least 5 characters.
+		                        </p>
+		                <p class="help-block"
+		                    ng-show="editForm.emailAddress.$error.maxlength">
+		                    This field cannot be longer than 100 characters.
+		                </p>
+		            </div>
+		        </div>
+		        
+		       <div class="form-group">
+		            <select required class="form-control" id="field_candidateProfession" name="candidateProfession" ng-model="candidateProfile.candidateProfessionId" ng-change="refreshSpecialties()" ng-options="candidateProfession.id as candidateProfession.name for candidateProfession in candidateprofessions"            >
+		                <option value="">Select Your Profession</option>
+		            </select>
+		        </div>
+		        <div class="form-group">
+		            <select required class="form-control" id="field_candidateSpecialty" name="candidateSpecialty" ng-model="candidateProfile.candidateSpecialtyId" ng-options="candidateSpecialty.id as candidateSpecialty.name for candidateSpecialty in candidatespecialties"            >
+		                <option value="">Select Your Specialty</option>
+		            </select>
+		        </div>
+		        <div class="form-group">
+					<multiselect id="field_statesLicensed" name="statesLicensed" placeholder="Select Your States Licensed" ng-model="candidateProfile.statesLicenseds" options="states" id-prop="id" display-prop="name" show-search="true" search-limit="55">
+					</multiselect>
+		        </div>
+		         <div class="form-group">
+		            <label class="control-label" for="field_compactLicense">Compact License&nbsp;&nbsp;&nbsp;</label>
+		                <input type="checkbox" name="compactLicense" id="field_compactLicense"
+		                          ng-model="candidateProfile.compactLicense"/>
+		        </div>
+		        <div class="form-group">
+					<multiselect id="field_preferredDestinationStates" name="preferredDestinationStates" placeholder="Select Your Preferred Destination States" ng-model="candidateProfile.preferredDestinationStates" options="states" id-prop="id" display-prop="name" show-search="true" search-limit="55">
+					</multiselect>				
+		        </div>
+		        <div class="form-group">
+	                <div class="input-group">
+	                    <input id="field_availableToStart" type="text" class="form-control" name="availableToStart" placeholder="Available to Start" datetime-picker="{{dateformat}}" ng-model="candidateProfile.availableToStart" is-open="datePickerOpenStatus.availableToStart"
+	                    />
+	                    <span class="input-group-btn">
+	                        <button type="button" class="btn btn-default" ng-click="openCalendar('availableToStart')"><i class="glyphicon glyphicon-calendar"></i></button>
+	                    </span>
+	                </div>
+		        </div>
+		        
+		        <div class="form-group">
+		            <input type="text" class="form-control" name="notes" id="field_notes" placeholder="Notes"
+		                    ng-model="candidateProfile.notes"
+		                    ng-maxlength="1000"/>
+		            <div ng-show="editForm.notes.$invalid">
+		                <p class="help-block"
+		                    ng-show="editForm.notes.$error.maxlength">
+		                    This field cannot be longer than 1000 characters.
+		                </p>
+		            </div>
+		        </div>
+
+		    
+		        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+		            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Submit</span>
+		        </button>
+		        
+		</form>
+
+		</div>
+		<div class="col-xs-12 hidden-sm hidden-md hidden-lg"> 
+		        			  <BR><BR><BR> 
+		
+			<h5 font-color="blue">THE BENEFITS OF TRAVEL NURSING WITH GENIE HEALTHCARE INCLUDE:</h5>
+			  <ul class="bullets">
+				 <li>Competitive Salaries</li>
+				 <li>Multiple Bonus opportunities: Referral, Extension, rebook etc.</li>
+				 <li>Weekly Direct Deposit</li>
+				 <li>We pay for all licenses and certifications necessary for your assignments.</li>
+			 </ul>
+			 <BR>
+			  Want to check opens jobs across the country? Visit <a href="http://www.geniehealthjobs.com">Genie Health Jobs</a> <BR><BR>
+			  Also visit our Facebook Group: 
+			  <a href="https://www.facebook.com/groups/geniehealthcare">Genie Health Care</a> 
+			  <BR><BR> 
+		</div>
+      </div>
+      <div class="row">
+        <div class="text-center"> </td>
+        <div class="text-center"> </td>
+      </div> 
+  </div>
+  </body>
+</html>
